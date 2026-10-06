@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unblocked Games</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- ROBOT CHECK -->
+        <section id="robot-screen" class="screen active">
+
+            <div class="verify-card">
+
+                <div class="lock">🔒</div>
+
+                <h1>Security Verification</h1>
+
+                <p>
+                    Before accessing Unblocked Games,
+                    please verify that you are human.
+                </p>
+
+                <button id="robot-button">
+                    I'm Not a Robot
+                </button>
+
+                <div id="robot-result"></div>
+
+                <small>
+                    This verification is completely secure.
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- CAPTCHA -->
+        <section id="captcha-screen" class="screen">
+
+            <div class="captcha-card">
+
+                <div class="captcha-header">
+
+                    <div>
+                        <strong>Security Check</strong>
+                        <span>Human verification</span>
+                    </div>
+
+                    <div class="captcha-logo">
+                        CAPTCHA
+                    </div>
+
+                </div>
+
+
+                <h2 id="captcha-title">
+                    Select all squares containing traffic lights.
+                </h2>
+
+                <p id="captcha-instruction">
+                    Click every square that matches the instruction.
+                </p>
+
+
+                <div id="captcha-grid" class="captcha-grid"></div>
+
+
+                <div class="captcha-footer">
+
+                    <span id="captcha-message"></span>
+
+                    <button id="captcha-verify">
+                        Verify
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOADING -->
+        <section id="loading-screen" class="screen">
+
+            <div class="loading-card">
+
+                <div class="spinner"></div>
+
+                <h1 id="loading-title">
+                    Preparing your games...
+                </h1>
+
+                <p id="loading-status">
+                    Please do not close this page.
+                </p>
+
+
+                <div class="progress-track">
+
+                    <div id="progress-bar"></div>
+
+                </div>
+
+
+                <div id="progress-text">
+                    0%
+                </div>
+
+
+                <div id="loading-detail">
+                    Initializing secure game environment
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 100% -->
+        <section id="final-screen" class="screen">
+
+            <div class="final-card">
+
+                <div class="check">
+                    ✓
+                </div>
+
+                <h1>
+                    100%
+                </h1>
+
+                <p>
+                    Everything has been successfully verified.
+                </p>
+
+                <div id="just-to-be-sure">
+                    Juuuust to be sure...
+                </div>
+
+                <p class="final-small">
+                    Please complete one final security verification.
+                </p>
+
+                <button id="final-start">
+                    Continue
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACTUAL WEBSITE -->
+        <section id="games-screen" class="screen">
+
+            <header class="site-header">
+
+                <div class="brand">
+
+                    <span>🎮</span>
+
+                    <div>
+
+                        <strong>
+                            UNBLOCKED GAMES
+                        </strong>
+
+                        <small>
+                            Definitely not blocked by your school
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="session">
+
+                    Session expires in
+                    <b id="session-timer">
+                        05:00
+                    </b>
+
+                </div>
+
+            </header>
+
+
+            <div class="announcement">
+
+                ⭐ Welcome! Your patience has been rewarded. ⭐
+
+            </div>
+
+
+            <main class="games-container">
+
+                <h1>
+                    Popular Games
+                </h1>
+
+                <p class="subtitle">
+                    Free games. No downloads. Probably.
+                </p>
+
+
+                <div
+                    class="games-grid"
+                    id="games-grid">
+                </div>
+
+
+                <div class="fake-ad">
+
+                    <strong>
+                        🔥 YOU WON'T BELIEVE THIS! 🔥
+                    </strong>
+
+                    <span>
+                        Click here to do absolutely nothing.
+                    </span>
+
+                    <button>
+                        CLICK NOW
+                    </button>
+
+                </div>
+
+            </main>
+
+
+            <footer>
+
+                Unblocked Games © 2026
+                • We definitely respect your privacy
+                •
+                <span>
+                    No verification required*
+                </span>
+
+            </footer>
+
+        </section>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

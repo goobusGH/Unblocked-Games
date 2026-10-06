@@ -1,0 +1,913 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #2563eb;
+    --dark: #172033;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #eef2f7;
+
+    color: #172033;
+}
+
+
+/* =========================
+   GENERAL SCREENS
+========================= */
+
+.screen {
+    display: none;
+
+    min-height: 100vh;
+}
+
+.screen.active {
+    display: flex;
+}
+
+
+/* =========================
+   VERIFICATION SCREENS
+========================= */
+
+#robot-screen,
+#captcha-screen,
+#loading-screen,
+#final-screen {
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #ffffff 0,
+            #eef2f7 55%,
+            #dfe6ef 100%
+        );
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.verify-card,
+.captcha-card,
+.loading-card,
+.final-card {
+
+    width: min(92vw, 560px);
+
+    background: white;
+
+    border:
+        1px solid #d8dee8;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 15px 45px
+        rgba(20, 35, 60, .13);
+}
+
+
+/* =========================
+   ROBOT
+========================= */
+
+.verify-card {
+
+    text-align: center;
+
+    padding:
+        48px 40px;
+}
+
+.lock {
+
+    font-size: 48px;
+
+    margin-bottom: 10px;
+}
+
+.verify-card h1 {
+
+    margin:
+        5px 0 12px;
+
+    font-size: 30px;
+}
+
+.verify-card p {
+
+    color: #5e6878;
+
+    line-height: 1.5;
+}
+
+
+button {
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: var(--blue);
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    padding:
+        14px 28px;
+
+    cursor: pointer;
+
+    transition: .15s;
+}
+
+button:hover {
+
+    background: #1d4ed8;
+
+    transform:
+        translateY(-1px);
+}
+
+button:disabled {
+
+    opacity: .7;
+
+    cursor: wait;
+
+    transform: none;
+}
+
+
+#robot-result {
+
+    min-height: 28px;
+
+    margin:
+        20px 0 8px;
+
+    font-weight: bold;
+}
+
+.verify-card small {
+
+    color: #9aa3b1;
+}
+
+
+/* =========================
+   CAPTCHA
+========================= */
+
+.captcha-card {
+
+    overflow: hidden;
+}
+
+
+.captcha-header {
+
+    padding:
+        18px 22px;
+
+    background: #f7f9fc;
+
+    border-bottom:
+        1px solid #dfe4eb;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.captcha-header strong {
+
+    display: block;
+
+    font-size: 14px;
+}
+
+.captcha-header span {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #7a8493;
+
+    font-size: 12px;
+}
+
+.captcha-logo {
+
+    font-weight: 900;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+.captcha-card h2 {
+
+    font-size: 19px;
+
+    padding:
+        22px 22px 5px;
+
+    margin: 0;
+}
+
+.captcha-card > p {
+
+    padding:
+        0 22px;
+
+    color: #687385;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   CAPTCHA GRID
+========================= */
+
+.captcha-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 4px;
+
+    margin:
+        18px 22px;
+
+    background: #d7dce4;
+
+    border:
+        4px solid #d7dce4;
+}
+
+.captcha-tile {
+
+    aspect-ratio: 1;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #e9edf3;
+
+    cursor: pointer;
+
+    border:
+        3px solid transparent;
+}
+
+.captcha-tile.selected {
+
+    border-color:
+        #2563eb;
+}
+
+.captcha-tile.selected::after {
+
+    content: "✓";
+
+    position: absolute;
+
+    inset: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    background:
+        rgba(37, 99, 235, .35);
+
+    color: white;
+
+    font-size: 38px;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 1px 3px #123;
+}
+
+.tile-art {
+
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+
+    place-items: center;
+
+    font-size:
+        clamp(28px, 7vw, 52px);
+}
+
+
+.captcha-footer {
+
+    min-height: 75px;
+
+    padding:
+        15px 22px;
+
+    border-top:
+        1px solid #dfe4eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+#captcha-message {
+
+    font-size: 13px;
+
+    color: #687385;
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+#loading-screen {
+
+    background:
+        #0b1020;
+
+    color: white;
+}
+
+.loading-card {
+
+    background:
+        #121a2d;
+
+    border-color:
+        #26324b;
+
+    color: white;
+
+    padding:
+        48px;
+
+    text-align: center;
+}
+
+
+.spinner {
+
+    width: 42px;
+    height: 42px;
+
+    margin:
+        0 auto 22px;
+
+    border:
+        4px solid #303c56;
+
+    border-top-color:
+        #60a5fa;
+
+    border-radius: 50%;
+
+    animation:
+        spin 1s linear infinite;
+}
+
+@keyframes spin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+.loading-card h1 {
+
+    font-size: 25px;
+
+    margin:
+        0 0 10px;
+}
+
+.loading-card p {
+
+    color:
+        #aab5c8;
+}
+
+
+.progress-track {
+
+    height: 24px;
+
+    margin-top: 32px;
+
+    background:
+        #080d18;
+
+    border-radius:
+        999px;
+
+    overflow: hidden;
+
+    border:
+        1px solid #303c56;
+}
+
+#progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #3b82f6,
+            #60a5fa
+        );
+
+    transition:
+        width .2s linear;
+}
+
+#progress-text {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    margin-top: 16px;
+}
+
+#loading-detail {
+
+    color:
+        #687793;
+
+    margin-top: 15px;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   FINAL SCREEN
+========================= */
+
+.final-card {
+
+    padding:
+        50px 40px;
+
+    text-align: center;
+}
+
+.check {
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    margin:
+        0 auto 15px;
+
+    display: grid;
+
+    place-items: center;
+
+    background:
+        #dcfce7;
+
+    color:
+        #15803d;
+
+    font-size: 42px;
+
+    font-weight: bold;
+}
+
+.final-card h1 {
+
+    font-size: 54px;
+
+    margin: 0;
+}
+
+#just-to-be-sure {
+
+    margin:
+        30px 0 8px;
+
+    font-size: 27px;
+
+    font-weight: 800;
+}
+
+.final-small {
+
+    color:
+        #6b7280;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================
+   ACTUAL GAMES WEBSITE
+========================= */
+
+#games-screen {
+
+    flex-direction: column;
+
+    background:
+        #f4f6f9;
+}
+
+
+.site-header {
+
+    width: 100%;
+
+    min-height: 72px;
+
+    padding:
+        12px 5%;
+
+    background:
+        #172033;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.brand > span {
+
+    font-size: 34px;
+}
+
+.brand strong {
+
+    display: block;
+
+    font-size: 18px;
+}
+
+.brand small {
+
+    display: block;
+
+    color:
+        #aeb8c8;
+
+    font-size: 11px;
+
+    margin-top: 3px;
+}
+
+
+.session {
+
+    background:
+        #27334b;
+
+    padding:
+        9px 13px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+}
+
+.session b {
+
+    color:
+        #fbbf24;
+}
+
+
+.announcement {
+
+    width: 100%;
+
+    text-align: center;
+
+    padding: 13px;
+
+    background:
+        #fef3c7;
+
+    color:
+        #7c5700;
+
+    font-weight: bold;
+
+    border-bottom:
+        1px solid #f2d98c;
+}
+
+
+.games-container {
+
+    width:
+        min(1100px, 92%);
+
+    padding:
+        40px 0;
+
+    flex: 1;
+}
+
+.games-container h1 {
+
+    margin: 0;
+
+    font-size: 30px;
+}
+
+.subtitle {
+
+    color:
+        #737d8d;
+
+    margin-top: 7px;
+}
+
+
+/* =========================
+   GAME CARDS
+========================= */
+
+.games-grid {
+
+    margin-top: 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(180px, 1fr)
+        );
+
+    gap: 17px;
+}
+
+.game {
+
+    background: white;
+
+    border:
+        1px solid #dfe4eb;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: .18s;
+
+    box-shadow:
+        0 3px 10px
+        rgba(20, 30, 50, .05);
+}
+
+.game:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(20, 30, 50, .13);
+}
+
+.game-image {
+
+    height: 115px;
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 55px;
+
+    background:
+        #e9eef5;
+}
+
+.game-info {
+
+    padding: 13px;
+}
+
+.game-info strong {
+
+    display: block;
+}
+
+.game-info small {
+
+    color:
+        #8a93a1;
+}
+
+.badge {
+
+    display: inline-block;
+
+    margin-top: 7px;
+
+    font-size: 9px;
+
+    padding:
+        3px 6px;
+
+    border-radius: 4px;
+
+    background:
+        #dcfce7;
+
+    color:
+        #166534;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   FAKE AD
+========================= */
+
+.fake-ad {
+
+    margin-top: 35px;
+
+    padding: 20px;
+
+    background: white;
+
+    border:
+        2px dashed #c9d1dc;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.fake-ad span {
+
+    color:
+        #7a8493;
+}
+
+.fake-ad button {
+
+    border: 0;
+
+    background:
+        #f59e0b;
+
+    color: white;
+
+    font-weight: bold;
+
+    padding:
+        9px 14px;
+
+    border-radius: 5px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    width: 100%;
+
+    padding: 20px;
+
+    text-align: center;
+
+    color:
+        #8a93a1;
+
+    font-size: 11px;
+
+    border-top:
+        1px solid #dfe4eb;
+
+    background: white;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .site-header {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+    .session {
+
+        width: 100%;
+    }
+
+    .verify-card,
+    .loading-card,
+    .final-card {
+
+        padding:
+            35px 24px;
+    }
+
+    .captcha-footer {
+
+        align-items:
+            stretch;
+
+        flex-direction:
+            column;
+    }
+
+}
